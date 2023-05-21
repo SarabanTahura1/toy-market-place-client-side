@@ -2,9 +2,11 @@ import React, { useContext, useState } from "react";
 import { AuthContextProvider } from "../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const Signup = () => {
-  const { profileUpdate, newAccountCreate } = useContext(AuthContextProvider);
+  const { profileUpdate, newAccountCreate, googleLogin, githubLogin } =
+    useContext(AuthContextProvider);
   const [errortext, setErrortext] = useState("");
 
   const handleCreateUSer = (e) => {
@@ -165,6 +167,16 @@ const Signup = () => {
           >
             Already have an account ? Click Here
           </Link>
+          <div className="flex items-center justify-evenly mt-6">
+            <FaGoogle
+              onClick={googleLogin}
+              className="text-4xl cursor-pointer"
+            ></FaGoogle>
+            <FaGithub
+              onClick={githubLogin}
+              className="text-4xl cursor-pointer"
+            ></FaGithub>
+          </div>
         </div>
       </div>
     </div>

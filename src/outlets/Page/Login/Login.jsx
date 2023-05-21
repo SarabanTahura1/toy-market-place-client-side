@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 
 import Swal from "sweetalert2";
 import { AuthContextProvider } from "../../../Provider/AuthProvider";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const Login = () => {
-  const { userLogin } = useContext(AuthContextProvider);
+  const { userLogin, googleLogin, githubLogin } =
+    useContext(AuthContextProvider);
   const [errortext, setErrortext] = useState("");
 
   // handle login user
@@ -97,6 +99,16 @@ const Login = () => {
           >
             Not a member? Click Here
           </Link>
+          <div className="flex items-center justify-evenly mt-6">
+            <FaGoogle
+              onClick={googleLogin}
+              className="text-4xl cursor-pointer"
+            ></FaGoogle>
+            <FaGithub
+              onClick={githubLogin}
+              className="text-4xl cursor-pointer"
+            ></FaGithub>
+          </div>
         </div>
       </div>
     </div>
