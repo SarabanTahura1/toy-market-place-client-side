@@ -10,7 +10,7 @@ const Gallery = () => {
     "https://i.postimg.cc/JnT0TCbB/Rainbow-Nail-Art-Kit2.jpg",
   ];
   return (
-    <div className="container mx-auto my-16 px-5">
+    <div className="my-28 px-5">
       <h2 className="text-center text-[#FC4BA4] py-4 border-b-4 font-semibold border-[#FC4BA4] text-2xl md:text-2xl  lg:text-4xl">
         Makeup Gallery
       </h2>
