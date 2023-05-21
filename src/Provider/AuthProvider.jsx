@@ -2,6 +2,7 @@ import React, { createContext } from "react";
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
 import { app } from "../../firebase.config";
@@ -23,7 +24,12 @@ const AuthProvider = ({ children }) => {
     });
   };
 
-  const authValue = { profileUpdate, newAccountCreate };
+  //user login
+  const userLogin = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+
+  const authValue = { profileUpdate, newAccountCreate, userLogin };
 
   return (
     <AuthContextProvider.Provider value={authValue}>

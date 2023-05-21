@@ -1,7 +1,37 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
+import Swal from "sweetalert2";
+import { AuthContextProvider } from "../../../Provider/AuthProvider";
+
 const Login = () => {
+  const { userLogin } = useContext(AuthContextProvider);
+  const [errortext, setErrortext] = useState("");
+
+  // handle login user
+  const handleUserLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    setErrortext("");
+
+    userLogin(email, password)
+      .then((result) => {
+        // sweat alert
+        Swal.fire({
+          title: "success",
+          text: "Login Successfully",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
+      })
+      .catch((error) => {
+        setErrortext(error.message);
+      });
+    form.reset();
+  };
+
   return (
     <div className="my-28 px-5 max-w-7xl mx-auto">
       <div className="w-full flex">
@@ -11,7 +41,7 @@ const Login = () => {
             <h2 className="text-2xl font-bold pb-1">Sign-in </h2>
             <div className="h-1 w-12 bg-white lg:bg-[#FC4BA4]"></div>
           </div>
-          <form className="space-y-2  py-4">
+          <form onSubmit={handleUserLogin} className="space-y-2  py-4">
             {/* email field */}
             <div className="space-y-1">
               <label
@@ -50,7 +80,7 @@ const Login = () => {
                 />
               </div>
             </div>
-            {/* <span className="text-error">{errortext}</span> */}
+            <span className="text-error">{errortext}</span>
             {/* Register button */}
             <div className="py-3">
               <button
