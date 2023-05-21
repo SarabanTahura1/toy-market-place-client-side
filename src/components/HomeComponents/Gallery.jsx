@@ -15,8 +15,12 @@ const Gallery = () => {
         Makeup Gallery
       </h2>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {imageGallery?.map((img) => (
-          <img className="p-5 shadow-lg h-96 object-cover w-full" src={img} />
+        {imageGallery?.map((img, index) => (
+          <img
+            key={index}
+            className="p-5 shadow-lg h-96 object-cover w-full"
+            src={img}
+          />
         ))}
       </div>
     </div>
