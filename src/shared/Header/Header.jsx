@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
+  const [user, setUser] = useState({ age: 24, displayName: "bristi" });
+
+  
   return (
     <div className="bg-gray-950 text-white ">
       {/* navbar start */}
@@ -33,21 +36,18 @@ const Header = () => {
             <li>
               <Link to="/">all toys</Link>
             </li>
-            <li>
-              <Link to="/">my toys</Link>
-            </li>
-            <li>
-              <Link to="/">add toys</Link>
-            </li>
+            {user && (
+              <>
+                <li>
+                  <Link to="/">my toys</Link>
+                </li>
+                <li>
+                  <Link to="/">add toys</Link>
+                </li>
+              </>
+            )}
             <li>
               <Link to="/blog">Blog</Link>
-            </li>
-            <li>
-              <Link to="/login">
-                <button className=" mt-2 bg-purple-700 px-3 py-1 text-white border-0">
-                  Login
-                </button>
-              </Link>
             </li>
           </ul>
         </div>
@@ -78,26 +78,30 @@ const Header = () => {
                 all toys
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/blog"
-                className={({ isActive }) =>
-                  isActive ? " text-[#FC4BA4] " : ""
-                }
-              >
-                my toys
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/blog"
-                className={({ isActive }) =>
-                  isActive ? " text-[#FC4BA4] " : ""
-                }
-              >
-                add toys{" "}
-              </NavLink>
-            </li>
+            {user && (
+              <>
+                <li>
+                  <NavLink
+                    to="/blog"
+                    className={({ isActive }) =>
+                      isActive ? " text-[#FC4BA4] " : ""
+                    }
+                  >
+                    my toys
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/blog"
+                    className={({ isActive }) =>
+                      isActive ? " text-[#FC4BA4] " : ""
+                    }
+                  >
+                    add toys{" "}
+                  </NavLink>
+                </li>
+              </>
+            )}
             <li>
               <NavLink
                 to="/blog"
@@ -108,14 +112,38 @@ const Header = () => {
                 Blog
               </NavLink>
             </li>
-            <li>
-              <Link to="/login">
-                <button className="btn bg-white transition-colors duration-500 ease-in-out hover:bg-[#F93899] hover:text-white text-[#FC4BA4] border-2   ">
-                  Login
-                </button>
-              </Link>
-            </li>
           </ul>
+          {user ? (
+            <div>
+              <label
+                className="btn btn-ghost btn-circle relative
+       "
+              >
+                <div
+                  tabIndex={0}
+                  className="relative inline-block group  btn-circle avatar"
+                >
+                  <img className="w-8 rounded-full" />
+                  <ul
+                    className="absolute right-0 px-4  z-10 w-48 py-4 text-start bg-gray-950 text-white
+           rounded-lg shadow-lg hidden group-hover:block"
+                  >
+                    <a className="py-2 text-xs">{user?.displayName}</a>
+                    <br />
+                    <a  className="py-2 text-xs">
+                      Sign Out
+                    </a>
+                  </ul>
+                </div>
+              </label>
+            </div>
+          ) : (
+            <Link to="/login">
+              <button className="btn bg-white transition-colors duration-500 ease-in-out hover:bg-[#F93899] hover:text-white text-[#FC4BA4] border-2   ">
+                Login
+              </button>
+            </Link>
+          )}
         </div>
       </div>
     </div>
