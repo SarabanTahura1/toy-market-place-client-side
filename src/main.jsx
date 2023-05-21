@@ -4,6 +4,7 @@ import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Root from "./Root/Root";
 import Home from "./outlets/Page/Home/Home";
+import AuthProvider from "./Provider/AuthProvider";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  // <AuthProvider>
-  <RouterProvider router={router}></RouterProvider>
-  // </AuthProvider>
+  <AuthProvider>
+    <RouterProvider router={router}></RouterProvider>
+  </AuthProvider>
 );
