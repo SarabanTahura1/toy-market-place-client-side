@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { AuthContextProvider } from "../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   const { profileUpdate, newAccountCreate } = useContext(AuthContextProvider);
@@ -63,9 +64,9 @@ const Signup = () => {
   };
 
   return (
-    <div className="my-28 px-5 max-w-7xl mx-auto">
+    <div className="py-28 px-5 max-w-7xl mx-auto">
       <div className="w-full flex">
-        <div className="lg:w-6/12 lg:bg-[#FC4BA4] min-h-full"></div>
+        <div className="lg:w-6/12 lg:bg-[#FC4BA4] "></div>
         <div className="w-full lg:w-6/12 px-5 my-10 lg:px-10 bg-[#eb7cb3] py-10 rounded-md lg:bg-transparent">
           <div>
             <h2 className="text-2xl font-bold pb-1">Signup </h2>
@@ -73,7 +74,7 @@ const Signup = () => {
           </div>
           <form onSubmit={handleCreateUSer} className="space-y-2  ">
             {/* name field */}
-            <div className="space-y-1">
+            <div className="space-y-1 py-4">
               <label
                 htmlFor="name"
                 className="block text-sm font-medium leading-6 text-gray-900"
@@ -158,9 +159,12 @@ const Signup = () => {
               </button>
             </div>
           </form>
-          <span className=" text-gray-700 hover:underline cursor-pointer">
+          <Link
+            to="/login"
+            className=" text-gray-700 hover:underline cursor-pointer"
+          >
             Already have an account ? Click Here
-          </span>
+          </Link>
         </div>
       </div>
     </div>
