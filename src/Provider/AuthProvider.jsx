@@ -1,13 +1,30 @@
 import React, { createContext } from "react";
-import { getAuth } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  updateProfile,
+} from "firebase/auth";
 import { app } from "../../firebase.config";
-const AuthContextProvider = createContext();
+export const AuthContextProvider = createContext();
 
 const AuthProvider = ({ children }) => {
   const auth = getAuth(app);
 
+  // New account create
+  const newAccountCreate = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
 
-  const authValue = {};
+  //update profile
+  const profileUpdate = (user, name, url) => {
+    return updateProfile(user, {
+      displayName: name,
+      photoURL: url,
+    });
+  };
+
+  const authValue = { profileUpdate, newAccountCreate };
+
   return (
     <AuthContextProvider.Provider value={authValue}>
       {children}

@@ -1,6 +1,67 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { AuthContextProvider } from "../../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Signup = () => {
+  const { profileUpdate, newAccountCreate } = useContext(AuthContextProvider);
+  const [errortext, setErrortext] = useState("");
+
+  const handleCreateUSer = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    const name = form.name.value;
+    const url = form.url.value;
+    console.log(email, password, name, url);
+    setErrortext(" ");
+
+    // if field Empty
+
+    if (
+      name.length === 0 ||
+      email.length === 0 ||
+      url.length === 0 ||
+      password.length === 0
+    ) {
+      return setErrortext(
+        "You can not Submit ! Please Fill the blanks input field"
+      );
+    }
+    // password length checker
+    if (password.length < 6) {
+      return Swal.fire({
+        title: "Error!",
+        text: "Password must be 6 character long",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
+    }
+
+    newAccountCreate(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(result.user);
+        profileUpdate(user, name, url)
+          .then((result) => {})
+          .catch((error) => {
+            setErrortext(error.message);
+          });
+
+        Swal.fire({
+          title: "success",
+          text: "Account Create Successfully",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
+      })
+      .catch((error) => {
+        setErrortext(error.code);
+        setErrortext(error.message);
+      });
+    form.reset();
+  };
+
   return (
     <div className="my-28 px-5 max-w-7xl mx-auto">
       <div className="w-full flex">
@@ -10,7 +71,7 @@ const Signup = () => {
             <h2 className="text-2xl font-bold pb-1">Signup </h2>
             <div className="h-1 w-12 bg-white lg:bg-[#FC4BA4]"></div>
           </div>
-          <form className="space-y-2  ">
+          <form onSubmit={handleCreateUSer} className="space-y-2  ">
             {/* name field */}
             <div className="space-y-1">
               <label
@@ -86,7 +147,7 @@ const Signup = () => {
                 />
               </div>
             </div>
-            {/* <span className="text-error">{errortext}</span> */}
+            <span className="text-error">{errortext}</span>
             {/* Register button */}
             <div className="py-3">
               <button
