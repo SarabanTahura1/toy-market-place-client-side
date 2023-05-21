@@ -11,12 +11,12 @@ const Gallery = () => {
   ];
   return (
     <div className="container mx-auto my-16 px-5">
-      <h2 className="text-center py-4 border-b-2 font-semibold border-gray-950 text-xl md:text-2xl  lg:text-4x">
-        Gallery
+      <h2 className="text-center text-[#FC4BA4] py-4 border-b-4 font-semibold border-[#FC4BA4] text-2xl md:text-2xl  lg:text-4xl">
+        Makeup Gallery
       </h2>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {imageGallery?.map((img) => (
-          <img className="p-5 shadow-lg h-96" src={img} />
+          <img className="p-5 shadow-lg h-96 object-cover w-full" src={img} />
         ))}
       </div>
     </div>

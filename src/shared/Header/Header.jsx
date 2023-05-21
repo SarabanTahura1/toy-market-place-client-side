@@ -62,7 +62,7 @@ const Header = () => {
               <NavLink
                 to="/"
                 className={({ isActive }) =>
-                  isActive ? " text-indigo-500 " : ""
+                  isActive ? " text-[#FC4BA4] " : ""
                 }
               >
                 Home
@@ -72,7 +72,7 @@ const Header = () => {
               <NavLink
                 to="/blog"
                 className={({ isActive }) =>
-                  isActive ? " text-indigo-500 " : ""
+                  isActive ? " text-[#FC4BA4] " : ""
                 }
               >
                 all toys
@@ -82,7 +82,7 @@ const Header = () => {
               <NavLink
                 to="/blog"
                 className={({ isActive }) =>
-                  isActive ? " text-indigo-500 " : ""
+                  isActive ? " text-[#FC4BA4] " : ""
                 }
               >
                 my toys
@@ -92,7 +92,7 @@ const Header = () => {
               <NavLink
                 to="/blog"
                 className={({ isActive }) =>
-                  isActive ? " text-indigo-500 " : ""
+                  isActive ? " text-[#FC4BA4] " : ""
                 }
               >
                 add toys{" "}
@@ -102,7 +102,7 @@ const Header = () => {
               <NavLink
                 to="/blog"
                 className={({ isActive }) =>
-                  isActive ? " text-indigo-500 " : ""
+                  isActive ? " text-[#FC4BA4] " : ""
                 }
               >
                 Blog
@@ -110,7 +110,7 @@ const Header = () => {
             </li>
             <li>
               <Link to="/login">
-                <button className="btn bg-gray-800 text-white border-0">
+                <button className="btn bg-white transition-colors duration-500 ease-in-out hover:bg-[#F93899] hover:text-white text-[#FC4BA4] border-2   ">
                   Login
                 </button>
               </Link>
