@@ -44,7 +44,7 @@ const Header = () => {
                     <Link to="/mytoys">my toys</Link>
                   </li>
                   <li>
-                    <Link to="/">add toys</Link>
+                    <Link to="/addtoys">add toys</Link>
                   </li>
                 </>
               )}
@@ -98,7 +98,7 @@ const Header = () => {
                   </li>
                   <li>
                     <NavLink
-                      to="/blog"
+                      to="/addtoys"
                       className={({ isActive }) =>
                         isActive ? " text-[#FC4BA4] " : ""
                       }
