@@ -16,6 +16,7 @@ export const AuthContextProvider = createContext();
 
 const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
+  const [loading, setLoading] = useState(true);
   const auth = getAuth(app);
   // Github & google provider
   const googleProvider = new GoogleAuthProvider();
@@ -27,6 +28,7 @@ const AuthProvider = ({ children }) => {
 
   //update profile
   const profileUpdate = (user, name, url) => {
+    setLoading(true);
     return updateProfile(user, {
       displayName: name,
       photoURL: url,
@@ -35,11 +37,13 @@ const AuthProvider = ({ children }) => {
 
   //user login
   const userLogin = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   // google login
   const googleLogin = () => {
+    setLoading(true);
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         Swal.fire({
@@ -56,6 +60,7 @@ const AuthProvider = ({ children }) => {
 
   // github login
   const githubLogin = () => {
+    setLoading(true);
     signInWithPopup(auth, githubProvider)
       .then((result) => {
         Swal.fire({
@@ -73,12 +78,14 @@ const AuthProvider = ({ children }) => {
   // logout
 
   const logout = () => {
+    setLoading(true);
     return signOut(auth);
   };
   // auth state observer
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
+      setLoading(false);
     });
     return () => {
       unsubscribe();
@@ -92,7 +99,7 @@ const AuthProvider = ({ children }) => {
     googleLogin,
     githubLogin,
     currentUser,
-    logout,
+    logout,loading
   };
 
   return (
