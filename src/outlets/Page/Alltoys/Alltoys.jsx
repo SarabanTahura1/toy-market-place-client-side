@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Alltoys = () => {
+  const [makeupToys, setMakeupToys] = useState([]);
+  // fetcch  all makeup data by useEffect
+  useEffect(() => {
+    fetch("http://localhost:3000/allmakeuptoys")
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+        setMakeupToys(result);
+      });
+  }, []);
+
   return (
     <div className="max-w-7xl mx-auto my-28 px-5 lg:px-0">
       <h2 className=" text-[#FC4BA4] py-4  font-semibold text-2xl md:text-2xl capitalize inline-block  lg:text-4xl">
@@ -38,29 +49,24 @@ const Alltoys = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td scope="col" className="px-6 py-4">
-                      Seller Name
-                    </td>
-                    <td scope="col" className="px-6 py-4">
-                      <img src="" className="h-16 w-16 rounded-md" alt="" />
-                    </td>
-                    <td scope="col" className="px-6 py-4">
-                      Toy name
-                    </td>
-                    <td scope="col" className="px-6 py-4">
-                      Subcategory
-                    </td>
-                    <td scope="col" className="px-6 py-4">
-                      Price
-                    </td>
-                    <td scope="col" className="px-6 py-4">
-                      Quantity
-                    </td>
-                    <td scope="col" className="px-6 py-4">
-                      Actions
-                    </td>
-                  </tr>
+                  {makeupToys.map((makeupToy) => (
+                    <tr>
+                      <td className="px-6 py-4">{makeupToy.sellerName}</td>
+                      <td className="px-6 py-4">
+                        <img
+                          src={makeupToy.photourl}
+                          className="h-12 w-12 rounded-full"
+                          alt=""
+                        />
+                      </td>
+                      <td className="px-6 py-4">{makeupToy.toyName}</td>
+                      <td className="px-6 py-4">{makeupToy.subcategory}</td>
+                      <td className="px-6 py-4">{makeupToy.price}$</td>
+                      <td className="px-6 py-4 text-center">
+                        {makeupToy.quantity}
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>

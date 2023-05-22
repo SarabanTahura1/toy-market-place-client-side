@@ -1,13 +1,12 @@
 import { AuthContextProvider } from "../../../Provider/AuthProvider";
 
 const Updatetoys = () => {
-
   const formOnSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const sellerName = form.name.value;
     const email = form.email.value;
-    const url = form.url.value;
+    const photourl = form.url.value;
     const toyName = form.toyName.value;
     const subcategory = form.subcategory.value;
     const price = form.price.value;
@@ -18,7 +17,7 @@ const Updatetoys = () => {
     console.log(
       sellerName,
       email,
-      url,
+      photourl,
       toyName,
       subcategory,
       price,
