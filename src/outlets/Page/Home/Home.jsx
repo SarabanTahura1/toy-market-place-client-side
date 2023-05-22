@@ -5,7 +5,7 @@ import Gallery from "../../../components/HomeComponents/Gallery";
 const Home = () => {
   return (
     <div>
-      <Banner />
+     
       <div className="max-w-7xl mx-auto">
         <Gallery />
       </div>
