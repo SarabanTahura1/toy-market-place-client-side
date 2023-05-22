@@ -36,7 +36,7 @@ const Header = () => {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="/">all toys</Link>
+                <Link to="/alltoys">all toys</Link>
               </li>
               {currentUser && (
                 <>
@@ -76,7 +76,7 @@ const Header = () => {
               </li>
               <li>
                 <NavLink
-                  to="/blog"
+                  to="/alltoys"
                   className={({ isActive }) =>
                     isActive ? " text-[#FC4BA4] " : ""
                   }

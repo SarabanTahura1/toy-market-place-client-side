@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const Signup = () => {
-  const { profileUpdate, newAccountCreate, googleLogin, githubLogin } =
+  const { profileUpdate, newAccountCreate, googleLogin, githubLogin, logout } =
     useContext(AuthContextProvider);
   const [errortext, setErrortext] = useState("");
 
@@ -46,7 +46,9 @@ const Signup = () => {
         const user = result.user;
         console.log(result.user);
         profileUpdate(user, name, url)
-          .then((result) => {})
+          .then((result) => {
+            logout();
+          })
           .catch((error) => {
             setErrortext(error.message);
           });

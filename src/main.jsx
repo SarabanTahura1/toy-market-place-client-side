@@ -7,6 +7,8 @@ import Home from "./outlets/Page/Home/Home";
 import AuthProvider from "./Provider/AuthProvider";
 import Signup from "./outlets/Page/Signup/Signup";
 import Login from "./outlets/Page/Login/Login";
+import Alltoys from "./outlets/Page/Alltoys/Alltoys";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "alltoys",
+        element: <Alltoys></Alltoys>,
       },
       {
         path: "signup",

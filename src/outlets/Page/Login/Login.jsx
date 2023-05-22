@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import Swal from "sweetalert2";
 import { AuthContextProvider } from "../../../Provider/AuthProvider";
@@ -9,7 +9,9 @@ const Login = () => {
   const { userLogin, googleLogin, githubLogin } =
     useContext(AuthContextProvider);
   const [errortext, setErrortext] = useState("");
-
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
+  const navigate = useNavigate();
   // handle login user
   const handleUserLogin = (e) => {
     e.preventDefault();
@@ -27,6 +29,7 @@ const Login = () => {
           icon: "success",
           confirmButtonText: "Ok",
         });
+        navigate(from);
       })
       .catch((error) => {
         setErrortext(error.message);

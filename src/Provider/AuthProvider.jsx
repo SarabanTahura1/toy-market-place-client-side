@@ -23,6 +23,7 @@ const AuthProvider = ({ children }) => {
   const githubProvider = new GithubAuthProvider();
   // New account create
   const newAccountCreate = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
@@ -99,7 +100,8 @@ const AuthProvider = ({ children }) => {
     googleLogin,
     githubLogin,
     currentUser,
-    logout,loading
+    logout,
+    loading,
   };
 
   return (
