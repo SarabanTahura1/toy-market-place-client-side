@@ -8,11 +8,11 @@ import AuthProvider from "./Provider/AuthProvider";
 import Signup from "./outlets/Page/Signup/Signup";
 import Login from "./outlets/Page/Login/Login";
 import Alltoys from "./outlets/Page/Alltoys/Alltoys";
-import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import Mytoys from "./outlets/Page/Mytoys/Mytoys";
 import Addtoys from "./outlets/Page/Addtoys/Addtoys";
 import Updatetoys from "./outlets/Page/Updatetoys/Updatetoys";
 import ViewDetails from "./outlets/Page/ViewDetails/ViewDetails";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +29,11 @@ const router = createBrowserRouter([
       },
       {
         path: "mytoys",
-        element: <Mytoys></Mytoys>,
+        element: (
+          <PrivateRoute>
+            <Mytoys></Mytoys>
+          </PrivateRoute>
+        ),
       },
       {
         path: "addtoys",

@@ -1,6 +1,27 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { AuthContextProvider } from "../../../Provider/AuthProvider";
 
 const Mytoys = () => {
+  const { currentUser } = useContext(AuthContextProvider);
+  const [makeupToys, setMakeupToys] = useState([]);
+  console.log(currentUser.email);
+
+  // fetcch  all makeup data by useEffect
+  useEffect(() => {
+    fetch(
+      `http://localhost:3000/allmakeuptoysbyemail?email=${currentUser.email}`
+    )
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+        setMakeupToys(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <div className="max-w-7xl mx-auto my-28 px-5 lg:px-0">
       <h2 className=" text-[#FC4BA4] py-4  font-semibold text-2xl md:text-2xl capitalize inline-block  lg:text-4xl">
@@ -32,35 +53,38 @@ const Mytoys = () => {
                     <th scope="col" className="px-6 py-4">
                       Quantity
                     </th>
-                    <th scope="col" className="px-6 py-4">
+                    <th scope="col" className="px-6 py-4 text-center">
                       Actions
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td scope="col" className="px-6 py-4">
-                      Seller Name
-                    </td>
-                    <td scope="col" className="px-6 py-4">
-                      <img src="" className="h-16 w-16 rounded-md" alt="" />
-                    </td>
-                    <td scope="col" className="px-6 py-4">
-                      Toy name
-                    </td>
-                    <td scope="col" className="px-6 py-4">
-                      Subcategory
-                    </td>
-                    <td scope="col" className="px-6 py-4">
-                      Price
-                    </td>
-                    <td scope="col" className="px-6 py-4">
-                      Quantity
-                    </td>
-                    <td scope="col" className="px-6 py-4">
-                      Actions
-                    </td>
-                  </tr>
+                  {makeupToys.map((makeupToy) => (
+                    <tr>
+                      <td className="px-6 py-4">{makeupToy.sellerName}</td>
+                      <td className="px-6 py-4">
+                        <img
+                          src={makeupToy.photourl}
+                          className="h-12 w-12 rounded-full"
+                          alt=""
+                        />
+                      </td>
+                      <td className="px-6 py-4">{makeupToy.toyName}</td>
+                      <td className="px-6 py-4">{makeupToy.subcategory}</td>
+                      <td className="px-6 py-4">{makeupToy.price}$</td>
+                      <td className="px-6 py-4 text-center">
+                        {makeupToy.quantity}
+                      </td>
+                      <td className="px-6 py-4 text-center space-x-2">
+                        <Link
+                          to={`/details/${makeupToy._id}`}
+                          className="px-3 py-2 cursor-pointer text-white rounded-md hover:bg-amber-600  text-sm font-semibold uppercase bg-warning"
+                        >
+                          view
+                        </Link>
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
