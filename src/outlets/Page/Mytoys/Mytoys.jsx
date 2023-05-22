@@ -6,7 +6,6 @@ import Banner from "../../../components/HomeComponents/Banner";
 const Mytoys = () => {
   const { currentUser } = useContext(AuthContextProvider);
   const [makeupToys, setMakeupToys] = useState([]);
-  console.log(currentUser.email);
 
   // fetcch  all makeup data by useEffect
   useEffect(() => {
@@ -15,7 +14,6 @@ const Mytoys = () => {
     )
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
         setMakeupToys(result);
       })
       .catch((error) => {
@@ -23,11 +21,25 @@ const Mytoys = () => {
       });
   }, []);
 
+  const deleteHandler = (id) => {
+    console.log(id);
+    fetch(`http://localhost:3000/allmakeuptoys/${id}`, {
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        const remaining = makeupToys?.filter((t) => t._id !== id);
+        setMakeupToys(remaining);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className=" py-28 px-5 lg:px-0">
-   
-        <Banner></Banner>
-   
+      <Banner></Banner>
+
       <div className="max-w-7xl mx-auto mt-20">
         <h2 className=" text-[#FC4BA4] py-4  font-semibold text-2xl md:text-2xl capitalize inline-block  lg:text-4xl">
           My toys - makeup
@@ -65,7 +77,7 @@ const Mytoys = () => {
                   </thead>
                   <tbody>
                     {makeupToys.map((makeupToy) => (
-                      <tr>
+                      <tr key={makeupToy._id}>
                         <td className="px-6 py-4">{makeupToy.sellerName}</td>
                         <td className="px-6 py-4">
                           <img
@@ -93,6 +105,12 @@ const Mytoys = () => {
                             className="px-3 py-2 cursor-pointer text-white rounded-md hover:bg-amber-600  text-sm font-semibold uppercase bg-warning"
                           >
                             update
+                          </Link>
+                          <Link
+                            onClick={() => deleteHandler(makeupToy._id)}
+                            className="px-3 py-2 cursor-pointer text-white rounded-md hover:bg-amber-600  text-sm font-semibold uppercase bg-warning"
+                          >
+                            delete
                           </Link>
                         </td>
                       </tr>

@@ -247,7 +247,7 @@ const Addtoys = () => {
               className="flex 
               justify-center rounded-md bg-[#FC4BA4] px-3 py-1.5 text-sm font-semibold leading-6 text-white focus:outline-0 shadow-sm hover:bg-[#F00F80] transition-colors duration-500 ease-in-out"
             >
-              Update Toys
+              Add Toys
             </button>
           </div>
         </form>
