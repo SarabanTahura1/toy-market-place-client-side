@@ -1,13 +1,13 @@
 import React from "react";
 
-const Alltoys = () => {
+const Mytoys = () => {
   return (
     <div className="max-w-7xl mx-auto my-28 px-5 lg:px-0">
       <h2 className=" text-[#FC4BA4] py-4  font-semibold text-2xl md:text-2xl capitalize inline-block  lg:text-4xl">
-        All toys - makeup
+        My toys - makeup
       </h2>
       <div className="h-1 w-28 bg-[#FC4BA4] "></div>
-      <div className="flex flex-col">
+      <div className="flex flex-col mt-20">
         <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
             <div className="overflow-hidden">
@@ -71,4 +71,4 @@ const Alltoys = () => {
   );
 };
 
-export default Alltoys;
+export default Mytoys;

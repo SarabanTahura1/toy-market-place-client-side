@@ -9,6 +9,7 @@ import Signup from "./outlets/Page/Signup/Signup";
 import Login from "./outlets/Page/Login/Login";
 import Alltoys from "./outlets/Page/Alltoys/Alltoys";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import Mytoys from "./outlets/Page/Mytoys/Mytoys";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "alltoys",
         element: <Alltoys></Alltoys>,
+      },
+      {
+        path: "mytoys",
+        element: <Mytoys></Mytoys>,
       },
       {
         path: "signup",
