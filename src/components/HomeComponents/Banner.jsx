@@ -12,7 +12,7 @@ const Banner = () => {
         // install Swiper modules
         modules={[Autoplay]}
         autoplay={{
-          delay: 3000,
+          delay: 4000,
           disableOnInteraction: false,
         }}
         spaceBetween={50}
@@ -24,7 +24,7 @@ const Banner = () => {
               src="https://i.postimg.cc/FH6Vmkrp/j5yfzr8qk5mqkugyuregc4ly2sawjl5dun3fyg0pyui51ox3xiavujamoy6rcirm.jpg"
               className="w-full h-screen "
             />
-            <div className="absolute space-y-4  z-10 max-w-5xl mx-auto text-center">
+            <div className="absolute space-y-4 px-4 z-10 max-w-5xl mx-auto text-center">
               <h1 className=" text-3xl md:text-4xl  lg:text-6xl bg-clip-text text-transparent font-bold    bg-gradient-to-r from-gray-900 to-rose-900">
                 Enhance Beauty - Unveiling Your Inner Goddess
               </h1>
@@ -45,7 +45,7 @@ const Banner = () => {
               src="https://i.postimg.cc/mDxMghXG/banner-makeup-beauty-products-like-rouge-brush-eyeshadow-lipstick-pink-background-empty-copy-space-d.jpg"
               className="w-full h-screen "
             />
-            <div className="absolute space-y-4  z-10 max-w-5xl mx-auto text-center">
+            <div className="absolute space-y-4 px-4  z-10 max-w-5xl mx-auto text-center">
               <h1 className=" text-3xl md:text-4xl  lg:text-6xl bg-clip-text text-transparent font-bold    bg-gradient-to-r from-gray-900 to-rose-900">
                 Radiant Beauty - Unveil Your Glamour
               </h1>
@@ -67,7 +67,7 @@ const Banner = () => {
               src="https://i.postimg.cc/0yD9qQwS/frame-top-border-makeup-products-cosmetics-pastel-pink-background-flat-lay-view-beauty-blog-banner-t.jpg"
               className="w-full h-screen "
             />
-            <div className="absolute space-y-4  z-10 max-w-5xl mx-auto text-center">
+            <div className="absolute space-y-4 px-4 z-10 max-w-5xl mx-auto text-center">
               <h1 className=" text-3xl md:text-4xl  lg:text-6xl   bg-clip-text text-transparent font-bold    bg-gradient-to-r from-gray-900 to-rose-900">
                 BeautyBloom - Blossom into Your Perfect Look
               </h1>

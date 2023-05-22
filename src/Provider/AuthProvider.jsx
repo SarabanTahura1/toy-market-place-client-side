@@ -1,11 +1,13 @@
-import React, { createContext } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import {
   GithubAuthProvider,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
   updateProfile,
 } from "firebase/auth";
 import { app } from "../../firebase.config";
@@ -13,6 +15,7 @@ import Swal from "sweetalert2";
 export const AuthContextProvider = createContext();
 
 const AuthProvider = ({ children }) => {
+  const [currentUser, setCurrentUser] = useState(null);
   const auth = getAuth(app);
   // Github & google provider
   const googleProvider = new GoogleAuthProvider();
@@ -67,12 +70,29 @@ const AuthProvider = ({ children }) => {
       });
   };
 
+  // logout
+
+  const logout = () => {
+    return signOut(auth);
+  };
+  // auth state observer
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user);
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
   const authValue = {
     profileUpdate,
     newAccountCreate,
     userLogin,
     googleLogin,
     githubLogin,
+    currentUser,
+    logout,
   };
 
   return (

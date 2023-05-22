@@ -1,17 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from "/logo.png";
 
 const Footer = () => {
   return (
-    <footer className="relative bg-gray-950 pt-8 pb-6">
+    <footer className="relative bg-rose-950 pt-8 pb-6 text-white">
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap text-left lg:text-left">
           <div className="w-full lg:w-6/12 px-4">
-            <div className="flex-1">
-              <Link to="/" className="min-w-max normal-case text-white font-bold text-2xl">
-                BeautyBelle
-              </Link>
-            </div>
+            <Link
+              to="/"
+              className=" normal-case inline-block font-bold text-xl "
+            >
+              <img src={logo} className="h-28" alt="" />
+            </Link>
+
             <h5 className="text-lg mt-0 mb-2 text-blueGray-600">
               Find us on any of these platforms, we respond 1-2 business days.
             </h5>
@@ -142,7 +145,7 @@ const Footer = () => {
                 href="https://www.creative-tim.com?ref=njs-profile"
                 className="text-blueGray-500 hover:text-blueGray-800"
               >
-               BeautyBelle
+                BeautyBelle
               </a>
               .
             </div>
