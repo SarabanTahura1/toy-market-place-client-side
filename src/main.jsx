@@ -12,6 +12,7 @@ import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import Mytoys from "./outlets/Page/Mytoys/Mytoys";
 import Addtoys from "./outlets/Page/Addtoys/Addtoys";
 import Updatetoys from "./outlets/Page/Updatetoys/Updatetoys";
+import ViewDetails from "./outlets/Page/ViewDetails/ViewDetails";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,12 @@ const router = createBrowserRouter([
       {
         path: "updatetoys",
         element: <Updatetoys></Updatetoys>,
+      },
+      {
+        path: "details/:id",
+        element: <ViewDetails></ViewDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/allmakeuptoys/${params.id}`),
       },
       {
         path: "signup",
