@@ -18,7 +18,7 @@ const Gallery = () => {
         {imageGallery?.map((img, index) => (
           <img
             key={index}
-            className="p-5 shadow-lg h-96 object-cover w-full"
+            className="p-5  shadow-lg h-96 object-cover w-full"
             src={img}
           />
         ))}

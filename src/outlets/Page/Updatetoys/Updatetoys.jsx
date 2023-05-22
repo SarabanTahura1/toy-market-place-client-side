@@ -1,8 +1,6 @@
-import React, { useContext } from "react";
 import { AuthContextProvider } from "../../../Provider/AuthProvider";
 
-const Addtoys = () => {
-  const { currentUser } = useContext(AuthContextProvider);
+const Updatetoys = () => {
 
   const formOnSubmit = (event) => {
     event.preventDefault();
@@ -33,7 +31,7 @@ const Addtoys = () => {
   return (
     <div className="max-w-7xl mx-auto py-28 px-5 lg:px-0">
       <h2 className=" text-[#FC4BA4] py-4  font-semibold text-2xl md:text-2xl capitalize inline-block  lg:text-4xl">
-        Add toys - makeup
+        Update toys - makeup
       </h2>
       <div className="h-1 w-28 bg-[#FC4BA4] "></div>
       <div>
@@ -51,7 +49,6 @@ const Addtoys = () => {
                 id="name"
                 name="name"
                 type="text"
-                defaultValue={currentUser?.displayName}
                 className="block w-full rounded-md border-2 border-gray-300 py-1.5 text-gray-900 shadow-sm  placeholder:text-gray-400  sm:text-sm sm:leading-6 focus:outline-0"
               />
             </div>
@@ -70,7 +67,6 @@ const Addtoys = () => {
                 id="email"
                 name="email"
                 type="email"
-                defaultValue={currentUser?.email}
                 className="block w-full focus:outline-0 border-2 border-gray-300 rounded-md py-1.5 text-gray-900 shadow-sm  placeholder:text-gray-400  sm:text-sm sm:leading-6"
               />
             </div>
@@ -215,9 +211,9 @@ const Addtoys = () => {
             <button
               type="submit"
               className="flex 
-              justify-center rounded-md bg-[#FC4BA4] px-3 py-1.5 text-sm font-semibold leading-6 text-white focus:outline-0 shadow-sm hover:bg-[#F00F80] transition-colors duration-500 ease-in-out"
+                justify-center rounded-md bg-[#FC4BA4] px-3 py-1.5 text-sm font-semibold leading-6 text-white focus:outline-0 shadow-sm hover:bg-[#F00F80] transition-colors duration-500 ease-in-out"
             >
-              Update Toys
+              Add Toys
             </button>
           </div>
         </form>
@@ -226,4 +222,4 @@ const Addtoys = () => {
   );
 };
 
-export default Addtoys;
+export default Updatetoys;
