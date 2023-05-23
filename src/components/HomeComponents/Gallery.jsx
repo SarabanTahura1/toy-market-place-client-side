@@ -18,6 +18,9 @@ const Gallery = () => {
         {imageGallery?.map((img, index) => (
           <img
             key={index}
+            data-aos="flip-left"
+            data-aos-offset="200"
+            data-aos-delay="50"
             className="p-5  shadow-lg h-96 object-cover w-full"
             src={img}
           />

@@ -7,7 +7,7 @@ import "swiper/css";
 
 const Banner = () => {
   return (
-    <div className="h-screen w-full">
+    <div data-aos="fade-in" className="h-screen w-full">
       <Swiper
         // install Swiper modules
         modules={[Autoplay]}

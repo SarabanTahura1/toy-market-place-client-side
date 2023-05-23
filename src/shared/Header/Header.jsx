@@ -7,8 +7,8 @@ const Header = () => {
   const { currentUser, logout } = useContext(AuthContextProvider);
 
   return (
-    <div className=" z-50   fixed top-0 left-0 right-0">
-      <div className="bg-gray-50 text-black ">
+    <div className=" z-50   fixed top-0 left-0 right-0 ">
+      <div className="bg-gray-50 text-black pe-4">
         {/* navbar start */}
         <div className="navbar  container mx-auto">
           <div className="dropdown">
@@ -30,7 +30,7 @@ const Header = () => {
             </label>
             <ul
               tabIndex={0}
-              className=" rounded-md  dropdown-content w-96 mt-3 p-2 shadow bg-gray-950   capitalize"
+              className=" rounded-md  dropdown-content w-96 mt-3 p-2 shadow bg-white   capitalize"
             >
               <li>
                 <Link to="/">Home</Link>
@@ -51,9 +51,45 @@ const Header = () => {
               <li>
                 <Link to="/blog">Blog</Link>
               </li>
+              <li>
+                {" "}
+                {currentUser ? (
+                  <div>
+                    <label
+                      className="btn btn-ghost btn-circle relative
+   "
+                    >
+                      <div
+                        tabIndex={0}
+                        className="relative inline-block group  btn-circle avatar"
+                      >
+                        <img className="w-8 rounded-full" />
+                        <ul
+                          className="absolute left-0 px-4  z-10 w-48 py-4 text-start bg-gray-950 text-white
+       rounded-lg shadow-lg hidden group-hover:block"
+                        >
+                          <a className="py-2 text-xs">
+                            {currentUser?.displayName}
+                          </a>
+                          <br />
+                          <a onClick={logout} className="py-2 text-xs">
+                            logout
+                          </a>
+                        </ul>
+                      </div>
+                    </label>
+                  </div>
+                ) : (
+                  <Link to="/login">
+                    <button className="btn bg-white transition-colors duration-500 ease-in-out hover:bg-[#F93899] hover:text-white text-[#FC4BA4] border-2   ">
+                      Login
+                    </button>
+                  </Link>
+                )}
+              </li>
             </ul>
           </div>
-          <div className="flex-1">
+          <div className="flex-1 ">
             <Link
               to="/"
               className="min-w-max normal-case font-bold text-xl flex items-center gap-2"
@@ -118,38 +154,42 @@ const Header = () => {
                   Blog
                 </NavLink>
               </li>
-            </ul>
-            {currentUser ? (
-              <div>
-                <label
-                  className="btn btn-ghost btn-circle relative
+              <>
+                {currentUser ? (
+                  <div>
+                    <label
+                      className="btn btn-ghost btn-circle relative
    "
-                >
-                  <div
-                    tabIndex={0}
-                    className="relative inline-block group  btn-circle avatar"
-                  >
-                    <img className="w-8 rounded-full" />
-                    <ul
-                      className="absolute right-0 px-4  z-10 w-48 py-4 text-start bg-gray-950 text-white
-       rounded-lg shadow-lg hidden group-hover:block"
                     >
-                      <a className="py-2 text-xs">{currentUser?.displayName}</a>
-                      <br />
-                      <a onClick={logout} className="py-2 text-xs">
-                        logout
-                      </a>
-                    </ul>
+                      <div
+                        tabIndex={0}
+                        className="relative inline-block group  btn-circle avatar"
+                      >
+                        <img className="w-8 rounded-full" />
+                        <ul
+                          className="absolute right-0 px-4  z-10 w-48 py-4 text-start bg-gray-950 text-white
+       rounded-lg shadow-lg hidden group-hover:block"
+                        >
+                          <a className="py-2 text-xs">
+                            {currentUser?.displayName}
+                          </a>
+                          <br />
+                          <a onClick={logout} className="py-2 text-xs">
+                            logout
+                          </a>
+                        </ul>
+                      </div>
+                    </label>
                   </div>
-                </label>
-              </div>
-            ) : (
-              <Link to="/login">
-                <button className="btn bg-white transition-colors duration-500 ease-in-out hover:bg-[#F93899] hover:text-white text-[#FC4BA4] border-2   ">
-                  Login
-                </button>
-              </Link>
-            )}
+                ) : (
+                  <Link to="/login">
+                    <button className="btn bg-white transition-colors duration-500 ease-in-out hover:bg-[#F93899] hover:text-white text-[#FC4BA4] border-2   ">
+                      Login
+                    </button>
+                  </Link>
+                )}
+              </>
+            </ul>
           </div>
         </div>
       </div>
