@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContextProvider } from "../../../Provider/AuthProvider";
-
+import Swal from "sweetalert2";
 
 const Mytoys = () => {
   const { currentUser } = useContext(AuthContextProvider);
@@ -22,18 +22,30 @@ const Mytoys = () => {
   }, []);
 
   const deleteHandler = (id) => {
-    console.log(id);
-    fetch(`http://localhost:3000/allmakeuptoys/${id}`, {
-      method: "DELETE",
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        const remaining = makeupToys?.filter((t) => t._id !== id);
-        setMakeupToys(remaining);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    Swal.fire({
+      title: "Do you want to save the changes?",
+      showDenyButton: true,
+      confirmButtonText: "Delete",
+      denyButtonText: `Don't save`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/allmakeuptoys/${id}`, {
+          method: "DELETE",
+        })
+          .then((response) => response.json())
+          .then((result) => {
+            const remaining = makeupToys?.filter((t) => t._id !== id);
+            setMakeupToys(remaining);
+            Swal.fire("success!", "Toys Deleted", "success");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else if (result.isDenied) {
+        Swal.fire("Changes are not saved", "", "info");
+      }
+    });
   };
 
   return (
