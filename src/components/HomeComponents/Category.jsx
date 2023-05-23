@@ -23,20 +23,13 @@ const Category = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:3000/toyscategory/${btnActive}`)
+    fetch(`https://beautybelle-server.vercel.app/toyscategory/${btnActive}`)
       .then((res) => res.json())
       .then((result) => setcategoryToys(result));
   }, [btnActive]);
 
-  //   const ActiveCategoryData = async (subcategory) => {
-  //     setBtnActive(subcategory);
-  //     const res = await fetch(`http://localhost:3000/alltoys/${category}`);
-  //     const data = await res.json();
-  //     setAllToys(data);
-  //   };
-
   return (
-    <div className="my-28 h-auto max-w-7xl mx-auto">
+    <div className="my-28 h-auto max-w-7xl mx-auto px-5">
       <div className=" flex items-center justify-center divide-x-2 divide-[#ca126e] ">
         <button
           onClick={() => setBtnActive("Rainbow")}

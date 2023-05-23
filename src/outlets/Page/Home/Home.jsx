@@ -3,6 +3,8 @@ import Banner from "../../../components/HomeComponents/Banner";
 import Gallery from "../../../components/HomeComponents/Gallery";
 import { Helmet } from "react-helmet";
 import Category from "../../../components/HomeComponents/Category";
+import GiftSection from "../../../components/HomeComponents/GiftSection";
+import Contact from "../../../components/HomeComponents/Contact";
 
 const Home = () => {
   return (
@@ -14,6 +16,8 @@ const Home = () => {
       <div className="max-w-7xl mx-auto">
         <Gallery />
         <Category />
+        <GiftSection></GiftSection>
+        <Contact></Contact>
       </div>
     </div>
   );
