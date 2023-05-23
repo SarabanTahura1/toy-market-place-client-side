@@ -48,7 +48,9 @@ const router = createBrowserRouter([
         path: "updatetoys/:id",
         element: <Updatetoys></Updatetoys>,
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/allmakeuptoys/${params.id}`),
+          fetch(
+            `https://beautybelle-server.vercel.app/allmakeuptoys/${params.id}`
+          ),
       },
       {
         path: "details/:id",
@@ -58,7 +60,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/allmakeuptoys/${params.id}`),
+          fetch(
+            `https://beautybelle-server.vercel.app/allmakeuptoys/${params.id}`
+          ),
       },
       {
         path: "signup",

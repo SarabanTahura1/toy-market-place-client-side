@@ -11,7 +11,7 @@ const Mytoys = () => {
   // fetcch  all makeup data by useEffect
   useEffect(() => {
     fetch(
-      `http://localhost:3000/allmakeuptoysbyemail?email=${currentUser.email}`
+      `https://beautybelle-server.vercel.app/allmakeuptoysbyemail?email=${currentUser.email}`
     )
       .then((response) => response.json())
       .then((result) => {
@@ -31,7 +31,7 @@ const Mytoys = () => {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/allmakeuptoys/${id}`, {
+        fetch(`https://beautybelle-server.vercel.app/allmakeuptoys/${id}`, {
           method: "DELETE",
         })
           .then((response) => response.json())
@@ -91,7 +91,7 @@ const Mytoys = () => {
                   </thead>
                   <tbody>
                     {makeupToys.map((makeupToy) => (
-                      <tr key={makeupToy._id}>
+                      <tr key={makeupToy._id} className="font-medium">
                         <td className="px-6 py-4">{makeupToy.sellerName}</td>
                         <td className="px-6 py-4">
                           <img

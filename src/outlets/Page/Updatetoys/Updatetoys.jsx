@@ -42,7 +42,7 @@ const Updatetoys = () => {
       description,
     };
 
-    fetch(`http://localhost:3000/allmakeuptoys/${_id}`, {
+    fetch(`https://beautybelle-server.vercel.app/allmakeuptoys/${_id}`, {
       method: "put",
       headers: {
         "content-type": "application/json",

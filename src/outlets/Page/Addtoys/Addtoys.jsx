@@ -41,7 +41,7 @@ const Addtoys = () => {
       ratings,
       description,
     };
-    fetch("http://localhost:3000/allmakeuptoys", {
+    fetch("https://beautybelle-server.vercel.app/allmakeuptoys", {
       method: "POST",
       headers: {
         "content-type": "application/json",

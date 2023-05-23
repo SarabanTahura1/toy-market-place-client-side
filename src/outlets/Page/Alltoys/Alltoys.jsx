@@ -24,7 +24,7 @@ const Alltoys = () => {
   };
   // fetcch  all makeup data by useEffect
   useEffect(() => {
-    fetch("http://localhost:3000/allmakeuptoys")
+    fetch("https://beautybelle-server.vercel.app/allmakeuptoys")
       .then((response) => response.json())
       .then((result) => {
         setMakeupToys(result);
@@ -32,7 +32,7 @@ const Alltoys = () => {
   }, []);
 
   const searchHandler = (name) => {
-    fetch(`http://localhost:3000/searchByName/${name}`)
+    fetch(`https://beautybelle-server.vercel.app/searchByName/${name}`)
       .then((response) => response.json())
       .then((result) => {
         setMakeupToys(result);
