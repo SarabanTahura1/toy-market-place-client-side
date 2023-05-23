@@ -27,10 +27,17 @@ const Alltoys = () => {
     fetch("http://localhost:3000/allmakeuptoys")
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
         setMakeupToys(result);
       });
   }, []);
+
+  const searchHandler = (name) => {
+    fetch(`http://localhost:3000/searchByName/${name}`)
+      .then((response) => response.json())
+      .then((result) => {
+        setMakeupToys(result);
+      });
+  };
 
   return (
     <div className="px-5 my-28 lg:px-0">
@@ -42,6 +49,18 @@ const Alltoys = () => {
           All toys - makeup
         </h2>
         <div className="h-1 w-28 bg-[#FC4BA4] "></div>
+        <div className=" w-full  flex justify-end">
+          <label className="inline-flex items-center gap-2  rounded-lg input-group-sm">
+            <span>Search By :</span>
+            <input
+              type="text"
+              placeholder="toy name"
+              onChange={(e) => searchHandler(e.target.value)}
+              className="input input-bordered input-md"
+            />
+          </label>
+        </div>
+
         <div className="flex flex-col">
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
@@ -74,7 +93,7 @@ const Alltoys = () => {
                   </thead>
                   <tbody>
                     {makeupToys.map((makeupToy) => (
-                      <tr>
+                      <tr key={makeupToy._id} className="font-medium">
                         <td className="px-6 py-4">{makeupToy.sellerName}</td>
                         <td className="px-6 py-4">
                           <img
