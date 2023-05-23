@@ -16,6 +16,7 @@ import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import Errorpage from "./outlets/Page/Errorpage/Errorpage";
 import AOS from "aos";
 import "aos/dist/aos.css"; // You can also use <link> for styles
+import Blogs from "./outlets/Page/Blog/Blogs";
 // ..
 AOS.init();
 const router = createBrowserRouter([
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
           fetch(
             `https://beautybelle-server.vercel.app/allmakeuptoys/${params.id}`
           ),
+      },
+      {
+        path: "blogs",
+        element: <Blogs></Blogs>,
       },
       {
         path: "signup",

@@ -49,7 +49,7 @@ const Header = () => {
                 </>
               )}
               <li>
-                <Link to="/blog">Blog</Link>
+                <Link to="/blogs">Blog</Link>
               </li>
               <li>
                 {" "}
@@ -146,7 +146,7 @@ const Header = () => {
               )}
               <li>
                 <NavLink
-                  to="/blog"
+                  to="/blogs"
                   className={({ isActive }) =>
                     isActive ? " text-[#FC4BA4] " : ""
                   }
