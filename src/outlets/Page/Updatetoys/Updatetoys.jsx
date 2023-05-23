@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -63,6 +64,9 @@ const Updatetoys = () => {
 
   return (
     <div className="px-5 lg:px-0">
+      <Helmet>
+        <title>BeautyBelle | Update Toys</title>
+      </Helmet>
       <div className="max-w-7xl mx-auto">
         <h2 className=" text-[#FC4BA4] py-4  font-semibold text-2xl md:text-2xl capitalize inline-block  lg:text-4xl">
           Update toys - makeup

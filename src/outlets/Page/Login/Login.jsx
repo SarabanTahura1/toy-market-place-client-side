@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContextProvider } from "../../../Provider/AuthProvider";
 import { FaGithub, FaGoogle } from "react-icons/fa";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { userLogin, googleLogin, githubLogin } =
@@ -39,6 +40,9 @@ const Login = () => {
 
   return (
     <div className="my-28 px-5 max-w-7xl mx-auto">
+      <Helmet>
+        <title>BeautyBelle | Login</title>
+      </Helmet>
       <div className="w-full flex">
         <div className="lg:w-6/12 lg:bg-[#FC4BA4] min-h-full"></div>
         <div className="w-full lg:w-6/12 px-5 my-10 lg:px-10 bg-[#eb7cb3] py-10 rounded-md lg:bg-transparent">

@@ -3,6 +3,7 @@ import { AuthContextProvider } from "../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { FaGithub, FaGoogle } from "react-icons/fa";
+import { Helmet } from "react-helmet";
 
 const Signup = () => {
   const { profileUpdate, newAccountCreate, googleLogin, githubLogin, logout } =
@@ -69,6 +70,9 @@ const Signup = () => {
 
   return (
     <div className="py-28 px-5 max-w-7xl mx-auto">
+      <Helmet>
+        <title>BeautyBelle | Signup</title>
+      </Helmet>
       <div className="w-full flex">
         <div className="lg:w-6/12 lg:bg-[#FC4BA4] "></div>
         <div className="w-full lg:w-6/12 px-5 my-10 lg:px-10 bg-[#eb7cb3] py-10 rounded-md lg:bg-transparent">

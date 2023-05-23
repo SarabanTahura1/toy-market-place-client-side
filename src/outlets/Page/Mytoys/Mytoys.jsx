@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContextProvider } from "../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const Mytoys = () => {
   const { currentUser } = useContext(AuthContextProvider);
@@ -50,6 +51,9 @@ const Mytoys = () => {
 
   return (
     <div className="  px-5 lg:px-0">
+      <Helmet>
+        <title>BeautyBelle | My Toys</title>
+      </Helmet>
       <div className="max-w-7xl mx-auto mt-20">
         <h2 className=" text-[#FC4BA4] py-4  font-semibold text-2xl md:text-2xl capitalize inline-block  lg:text-4xl">
           My toys - makeup

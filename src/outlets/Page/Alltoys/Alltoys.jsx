@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
-
 
 const Alltoys = () => {
   const [makeupToys, setMakeupToys] = useState([]);
@@ -16,7 +16,9 @@ const Alltoys = () => {
 
   return (
     <div className=" py-28 px-5 lg:px-0">
- 
+      <Helmet>
+        <title>BeautyBelle | All Toys</title>
+      </Helmet>
       <div className="max-w-7xl mx-auto">
         <h2 className=" text-[#FC4BA4] py-4  font-semibold text-2xl md:text-2xl capitalize inline-block  lg:text-4xl">
           All toys - makeup
