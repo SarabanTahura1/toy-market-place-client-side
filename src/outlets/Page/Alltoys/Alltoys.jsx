@@ -1,9 +1,27 @@
 import React, { useEffect, useState } from "react";
+import { useContext } from "react";
 import { Helmet } from "react-helmet";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
+import Swal from "sweetalert2";
+import { AuthContextProvider } from "../../../Provider/AuthProvider";
 
 const Alltoys = () => {
+  const { currentUser } = useContext(AuthContextProvider);
   const [makeupToys, setMakeupToys] = useState([]);
+  const location = useLocation();
+
+  const HandleView = () => {
+    if (!currentUser) {
+      Swal.fire({
+        icon: "warning",
+        title: "User Not Found!",
+        text: "You have to log in first to view details",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+      return <Navigate to="/login" state={{ from: location }} replace />;
+    }
+  };
   // fetcch  all makeup data by useEffect
   useEffect(() => {
     fetch("http://localhost:3000/allmakeuptoys")
@@ -73,6 +91,7 @@ const Alltoys = () => {
                         </td>
                         <td className="px-6 py-4 text-center">
                           <Link
+                            onClick={HandleView}
                             to={`/details/${makeupToy._id}`}
                             className="px-3 py-2 cursor-pointer text-white rounded-md hover:bg-amber-600  text-sm font-semibold uppercase bg-warning"
                           >

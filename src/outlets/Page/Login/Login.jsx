@@ -21,6 +21,13 @@ const Login = () => {
     const password = form.password.value;
     setErrortext("");
 
+    // if field Empty
+
+    if (email.length === 0 || password.length === 0) {
+      return setErrortext(
+        "You can not Submit ! Please Fill the blanks input field"
+      );
+    }
     userLogin(email, password)
       .then((result) => {
         // sweat alert

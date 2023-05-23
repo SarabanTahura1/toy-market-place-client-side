@@ -52,7 +52,11 @@ const router = createBrowserRouter([
       },
       {
         path: "details/:id",
-        element: <ViewDetails></ViewDetails>,
+        element: (
+          <PrivateRoute>
+            <ViewDetails></ViewDetails>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:3000/allmakeuptoys/${params.id}`),
       },
