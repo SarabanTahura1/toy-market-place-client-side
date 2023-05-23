@@ -49,15 +49,38 @@ const Mytoys = () => {
     });
   };
 
+  const sortOnChange = (e) => {
+    
+    let changedValue = e.target.value;
+    fetch(
+      `https://beautybelle-server.vercel.app/allmakeuptoysbyemailsort/${changedValue}?email=${currentUser.email}`
+    )
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        setMakeupToys(result);
+      });
+  };
+
   return (
     <div className=" my-28 px-5 lg:px-0">
       <Helmet>
         <title>BeautyBelle | My Toys</title>
       </Helmet>
       <div className="max-w-7xl mx-auto mt-20">
-        <h2 className=" text-[#FC4BA4] py-4  font-semibold text-2xl md:text-2xl capitalize inline-block  lg:text-4xl">
-          My toys - makeup
-        </h2>
+        <div className="flex justify-between items-center gap-6">
+          <h2 className=" text-[#FC4BA4] py-4  font-semibold text-2xl md:text-2xl capitalize inline-block  lg:text-4xl">
+            My toys - makeup
+          </h2>
+          <select
+            onChange={sortOnChange}
+            className="select select-bordered select-sm  max-w-xs"
+          >
+            <option>none</option>
+            <option>ascending</option>
+            <option>descending</option>
+          </select>
+        </div>
         <div className="h-1 w-28 bg-[#FC4BA4] "></div>
         <div className="flex flex-col ">
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
