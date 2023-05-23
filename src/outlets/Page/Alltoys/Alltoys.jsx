@@ -33,12 +33,12 @@ const Alltoys = () => {
   }, []);
 
   return (
-    <div className=" py-28 px-5 lg:px-0">
+    <div className="px-5 my-28 lg:px-0">
       <Helmet>
         <title>BeautyBelle | All Toys</title>
       </Helmet>
       <div className="max-w-7xl mx-auto">
-        <h2 className=" text-[#FC4BA4] py-4  font-semibold text-2xl md:text-2xl capitalize inline-block  lg:text-4xl">
+        <h2 className=" text-[#FC4BA4]   font-semibold text-2xl md:text-2xl capitalize inline-block  lg:text-4xl">
           All toys - makeup
         </h2>
         <div className="h-1 w-28 bg-[#FC4BA4] "></div>
@@ -89,11 +89,11 @@ const Alltoys = () => {
                         <td className="px-6 py-4 text-center">
                           {makeupToy.quantity}
                         </td>
-                        <td className="px-6 py-4 text-center">
+                        <td className="px-6 py-4">
                           <Link
                             onClick={HandleView}
                             to={`/details/${makeupToy._id}`}
-                            className="px-3 py-2 cursor-pointer text-white rounded-md hover:bg-amber-600  text-sm font-semibold uppercase bg-warning"
+                            className="px-3 py-2 cursor-pointer text-white rounded-md hover:bg-[#ca126e]   text-sm font-semibold uppercase bg-[#FC4BA4]"
                           >
                             View
                           </Link>

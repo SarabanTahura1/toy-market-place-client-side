@@ -50,7 +50,7 @@ const Mytoys = () => {
   };
 
   return (
-    <div className="  px-5 lg:px-0">
+    <div className=" my-28 px-5 lg:px-0">
       <Helmet>
         <title>BeautyBelle | My Toys</title>
       </Helmet>
@@ -59,7 +59,7 @@ const Mytoys = () => {
           My toys - makeup
         </h2>
         <div className="h-1 w-28 bg-[#FC4BA4] "></div>
-        <div className="flex flex-col mt-20">
+        <div className="flex flex-col ">
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
               <div className="overflow-hidden">
@@ -109,20 +109,20 @@ const Mytoys = () => {
                         <td className="px-6 py-4 text-center space-x-2">
                           <Link
                             to={`/details/${makeupToy._id}`}
-                            className="px-3 py-2 cursor-pointer text-white rounded-md hover:bg-amber-600  text-sm font-semibold uppercase bg-warning"
+                            className="px-3 py-2 cursor-pointer bg-[#FC4BA4] text-white rounded-md hover:bg-[#ca126e]  text-sm font-semibold uppercase "
                           >
                             view
                           </Link>
 
                           <Link
                             to={`/updatetoys/${makeupToy._id}`}
-                            className="px-3 py-2 cursor-pointer text-white rounded-md hover:bg-amber-600  text-sm font-semibold uppercase bg-warning"
+                            className="px-3 py-2 cursor-pointer text-white rounded-md hover:bg-amber-800  text-sm font-semibold uppercase bg-amber-600 "
                           >
                             update
                           </Link>
                           <Link
                             onClick={() => deleteHandler(makeupToy._id)}
-                            className="px-3 py-2 cursor-pointer text-white rounded-md hover:bg-amber-600  text-sm font-semibold uppercase bg-warning"
+                            className="px-3 py-2 cursor-pointer text-white rounded-md hover:bg-[#c70707] text-sm font-semibold uppercase bg-[#f32a2a]"
                           >
                             delete
                           </Link>
