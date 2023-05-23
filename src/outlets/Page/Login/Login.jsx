@@ -51,7 +51,13 @@ const Login = () => {
         <title>BeautyBelle | Login</title>
       </Helmet>
       <div className="w-full flex">
-        <div className="lg:w-6/12 lg:bg-[#FC4BA4] min-h-full"></div>
+        <div className="lg:w-6/12 hidden lg:block  min-h-full">
+          <img
+            src="https://i.postimg.cc/Yq0n5P5K/secure-technology-abstract-background-23-2148331625.jpg"
+            alt=""
+            className="h-full"
+          />
+        </div>
         <div className="w-full lg:w-6/12 px-5 my-10 lg:px-10 bg-[#eb7cb3] py-10 rounded-md lg:bg-transparent">
           <div>
             <h2 className="text-2xl font-bold pb-1">Sign-in </h2>

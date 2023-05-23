@@ -73,8 +73,13 @@ const Signup = () => {
       <Helmet>
         <title>BeautyBelle | Signup</title>
       </Helmet>
-      <div className="w-full flex">
-        <div className="lg:w-6/12 lg:bg-[#FC4BA4] "></div>
+      <div className="w-full flex flex-wrap">
+        <div className="lg:w-6/12 w-full hidden lg:block ">
+          <img
+            src="https://i.postimg.cc/R0f4cd9y/sign-page-abstract-concept-illustration-335657-3875-removebg-preview.png"
+            alt=""
+          />
+        </div>
         <div className="w-full lg:w-6/12 px-5 my-10 lg:px-10 bg-[#eb7cb3] py-10 rounded-md lg:bg-transparent">
           <div>
             <h2 className="text-2xl font-bold pb-1">Signup </h2>
