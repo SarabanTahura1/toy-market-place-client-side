@@ -1,15 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, Navigate, useLocation } from "react-router-dom";
+import { AuthContextProvider } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Category = () => {
   const [btnActive, setBtnActive] = useState("Rainbow");
   const [categoryToys, setcategoryToys] = useState([]);
-  console.log(btnActive);
+  const { currentUser } = useContext(AuthContextProvider);
+  const location = useLocation();
+
+  const HandleView = () => {
+    if (!currentUser) {
+      Swal.fire({
+        icon: "warning",
+        title: "User Not Found!",
+        text: "You have to log in first to view details",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+      return <Navigate to="/login" state={{ from: location }} replace />;
+    }
+  };
 
   useEffect(() => {
-    fetch(`http://localhost:3000/allmakeuptoys/${btnActive}`)
+    fetch(`http://localhost:3000/toyscategory/${btnActive}`)
       .then((res) => res.json())
-      .then((result) => console.log(result));
-  }, []);
+      .then((result) => setcategoryToys(result));
+  }, [btnActive]);
 
   //   const ActiveCategoryData = async (subcategory) => {
   //     setBtnActive(subcategory);
@@ -19,7 +36,7 @@ const Category = () => {
   //   };
 
   return (
-    <div className="my-28 max-w-7xl mx-auto">
+    <div className="my-28 h-auto max-w-7xl mx-auto">
       <div className=" flex items-center justify-center divide-x-2 divide-[#ca126e] ">
         <button
           onClick={() => setBtnActive("Rainbow")}
@@ -46,7 +63,30 @@ const Category = () => {
           Princess
         </button>
       </div>
-      <div></div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+        {categoryToys &&
+          categoryToys.map((toy, index) => (
+            <div className="w-full shadow-xl p-5">
+              <div className="h-96 w-full ">
+                <img src={toy.photourl} className="h-full w-full" alt="" />
+              </div>
+              <div>
+                <h2 className="font-medium">Name : {toy.toyName}</h2>
+                <h2 className="font-medium">Price : ${toy.price}</h2>
+                <h2 className="font-medium">Ratings: {toy.ratings}</h2>
+                <div className="mt-2 text-center">
+                  <Link
+                    onClick={HandleView}
+                    to={`/details/${toy._id}`}
+                    className="px-3 text-center py-2 w-20 mx-auto inline-block  cursor-pointer text-white rounded-md hover:bg-[#ca126e]   text-sm font-semibold uppercase bg-[#FC4BA4]"
+                  >
+                    View
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+      </div>
     </div>
   );
 };
