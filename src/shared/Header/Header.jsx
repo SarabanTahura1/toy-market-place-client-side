@@ -7,7 +7,7 @@ const Header = () => {
   const { currentUser, logout } = useContext(AuthContextProvider);
 
   return (
-    <div className=" z-50   fixed top-0 left-0 right-0 ">
+    <div className=" z-50   fixed top-0 left-0 right-0">
       <div className="bg-gray-50 text-black ">
         {/* navbar start */}
         <div className="navbar  container mx-auto">
